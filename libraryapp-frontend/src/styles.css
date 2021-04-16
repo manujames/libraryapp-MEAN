@@ -10527,6 +10527,12 @@ section.input-section-bg-dark{
   background-image: url("assets/images/form-bg.png");
 }
 
+section.input-section-bg-notfound{
+  background-color: #c53f3f;
+  /* background-image: url("assets/images/map-image.png"); */
+  background-image: url("assets/images/form-bg.png");
+}
+
 section.input-section-bg-theme{
   /* background-color: #186793; */
   background-color: #298cc2;

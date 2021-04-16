@@ -23,6 +23,7 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { EditAuthorComponent } from './edit-author/edit-author.component';
 import { DeleteBookComponent } from './delete-book/delete-book.component';
 import { DeleteAuthorComponent } from './delete-author/delete-author.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DeleteAuthorComponent } from './delete-author/delete-author.component';
     EditAuthorComponent,
     DeleteBookComponent,
     DeleteAuthorComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

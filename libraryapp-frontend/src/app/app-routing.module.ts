@@ -13,6 +13,7 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
@@ -52,7 +53,9 @@ const routes: Routes = [
     canActivate:[AuthGuard],
     component:DeleteAuthorComponent
   },
-  {path:'access-denied',component:AccessDeniedComponent}
+  {path:'access-denied',component:AccessDeniedComponent},
+  {path:'notfound',component:NotFoundComponent},
+  {path:'**',redirectTo:'/notfound'}
 ];
 
 @NgModule({
