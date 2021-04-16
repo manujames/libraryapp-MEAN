@@ -1,7 +1,7 @@
 {
-  "name": "library-manager",
+  "name": "libraryapp-backend",
   "version": "1.0.0",
-  "description": "Library manager app",
+  "description": "Library manager api",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/manujames/library-manager.git"
+    "url": "https://github.com/manujames/libraryapp-MEAN.git"
   },
   "author": "manu",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/manujames/library-manager/issues"
+    "url": "https://github.com/manujames/libraryapp-MEAN/issues"
   },
-  "homepage": "https://github.com/manujames/library-manager#readme",
+  "homepage": "https://github.com/manujames/libraryapp-MEAN",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
