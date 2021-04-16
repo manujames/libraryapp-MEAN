@@ -1,0 +1,121 @@
+  .b {
+    background: #343a40;
+    border: 3px solid #fed136;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    margin: 10px;
+    position: relative;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  #building {
+    color: #343a40;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 30px;
+    overflow: hidden;
+    display: flex;
+    width: 350px;
+    height: 30vh;
+    margin: auto;
+  }
+  #blocks {
+    margin: auto;
+  }
+  #b1 {
+    animation-name: b1;
+  }
+  #b2 {
+    margin-left: 72.5px;
+    animation-name: b2;
+  }
+  #b3 {
+    margin-top: -60px;
+    animation-name: b3;
+  }
+  #b4 {
+    margin-left: 72.5px;
+    animation-name: b4;
+  }
+  
+  @keyframes b1 {
+    0% {
+      left: 0px;
+      transform: rotate(0deg);
+    }
+    50% {
+      left: 62.5px;
+      bottom: 0px;
+      transform: rotate(90deg);
+    }
+    100% {
+      left: 62.5px;
+      bottom: -61.25px;
+      transform: rotate(90deg);
+    }
+  }
+  @keyframes b2 {
+    50% {
+      bottom: 0px;
+    }
+    100% {
+      bottom: -61.25px;
+    }
+  }
+  @keyframes b3 {
+    50% {
+      top: 0px;
+    }
+    100% {
+      top: -61.25px;
+    }
+  }
+  @keyframes b4 {
+    0% {
+      left: 0px;
+      transform: rotate(0deg);
+    }
+    50% {
+      left: -62.5px;
+      top: 0px;
+      transform: rotate(90deg);
+    }
+    100% {
+      left: -62.5px;
+      top: -61.25px;
+      transform: rotate(90deg);
+    }
+  }
+  #caption {
+    padding-left: 50px;
+    margin: auto;
+  }
+
+  #errorBlock {
+    color: #dc3545;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 30px;
+    display: flex;
+    width: 500px;
+    height: 30vh;
+    margin: auto;
+  }
+
+  #errorMsg{
+    /* padding-left: 50px; */
+    text-align: center;
+    margin: auto;
+  }
+  
+  @media (max-width: 500px) {
+    #building {
+      width: 100%;
+    }
+    #errorBlock {
+        width: 100%;
+      }
+    #caption {
+      display: none;
+    }
+  }

@@ -1,0 +1,32 @@
+<!-- delete Book -->
+<section class="page-section input-section input-section-bg-dark d-flex align-items-center" id="deleteBook">
+    <div class="container">
+        <br>
+        <br>
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Are you sure want to delete this item?</h2>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-danger btn-xl text-uppercase" type="button" (click)="deleteBook()">Yes</button>
+            <a routerLink="/books" class="btn btn-light btn-xl text-uppercase" id="cancelButton" role="button">No</a>
+        </div>
+        <br>
+        <br>
+        <div class="row align-items-stretch justify-content-around mb-5">
+            <div id="success" class="col-md-6 text-center" [class.d-none]='state=="none"'>
+                <div class='alert alert-warning' [class.d-none]='state!="connecting"'>
+                    <strong>Deleting..</strong>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                </div>
+                <div class='alert alert-success' [class.d-none]='state!="success"'>
+                    <strong>Deleted successfully</strong>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                </div>
+                <div class='alert alert-danger' [class.d-none]='state!="error"'>
+                    <strong>{{errorMsg}}</strong>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

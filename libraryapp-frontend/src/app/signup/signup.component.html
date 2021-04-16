@@ -1,0 +1,76 @@
+<!-- Sign up-->
+<section class="page-section input-section input-section-bg-theme d-flex align-items-center" id="signup">
+    <div class="container">
+        <br>
+        <br>
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Sign up</h2>
+            <br>
+        </div>
+        <form id="signupForm" name="signupForm" class="input-form" [formGroup]="signupForm" (ngSubmit)="signup()" novalidate=true>
+            <div class="row align-items-stretch mb-5 justify-content-around">
+                <div class="col-md-8">
+                    <div id="success" class="text-center" [class.d-none]='signupState=="none"'>
+                        <div class='alert alert-warning' [class.d-none]='signupState!="connecting"'>
+                            <strong>Signing up..</strong>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        </div>
+                        <div class='alert alert-success' [class.d-none]='signupState!="success"'>
+                            <strong>Sign up successful</strong>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        </div>
+                        <div class='alert alert-danger' [class.d-none]='signupState!="error"'>
+                            <strong>{{errorMsg}}</strong>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input class="form-control" id="fname" name="fname" type="text" placeholder="First name *"
+                                    formControlName="fname" [class.is-valid]='signUpFormControls.fname.valid' [class.is-invalid]='signUpFormControls.fname.invalid && signUpFormControls.fname.touched'/>
+                                <p class='text-danger' [class.d-none]='signUpFormControls.fname.valid || signUpFormControls.fname.untouched'>Please enter your first name.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input class="form-control" id="sname" name="sname" type="text" placeholder="Second name *"
+                                    formControlName="sname" [class.is-valid]='signUpFormControls.sname.valid' [class.is-invalid]='signUpFormControls.sname.invalid && signUpFormControls.sname.touched'/>
+                                <p class='text-danger' [class.d-none]='signUpFormControls.sname.valid || signUpFormControls.sname.untouched'>Please enter your second name.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="email" name="email" type="text" placeholder="Email id *"
+                            formControlName="email" [class.is-valid]='signUpFormControls.email.valid' [class.is-invalid]='signUpFormControls.email.invalid && signUpFormControls.email.touched'/>
+                        <p class='text-danger' [class.d-none]='signUpFormControls.email.valid || signUpFormControls.email.untouched'>Please enter a valid email.</p>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Password *"
+                            formControlName="password" [class.is-valid]='signUpFormControls.password.valid' [class.is-invalid]='signUpFormControls.password.invalid && signUpFormControls.password.touched'/>
+                        <div class="text-danger" [class.d-none]='signUpFormControls.password.valid || signUpFormControls.password.untouched'>
+                            <span *ngIf='signUpFormControls.password.errors && signUpFormControls.password.errors.required'>Password can not be blank.<br></span>
+                            <span *ngIf='signUpFormControls.password.errors && signUpFormControls.password.errors.minlength'>Password should be minimum 8 characters.<br></span>
+                            <span *ngIf='signUpFormControls.password.errors && signUpFormControls.password.errors.noNumeric'>Needs at least one number.<br></span>
+                            <span *ngIf='signUpFormControls.password.errors && signUpFormControls.password.errors.noLowerCase'>Needs at least one lower case letter.<br></span>
+                            <span *ngIf='signUpFormControls.password.errors && signUpFormControls.password.errors.noUpperCase'>Needs at least one upper case letter.<br></span>
+                            <span *ngIf='signUpFormControls.password.errors && signUpFormControls.password.errors.noSpecialChar'>Needs at least one special character.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="repeatPassword" name="repeatPassword" type="password" placeholder="Repeat password *"
+                            formControlName="repeatPassword" [class.is-valid]='signUpFormControls.repeatPassword.valid && !(signupForm.errors && signupForm.errors.pwdMissMatch)' [class.is-invalid]='signupForm.errors && signupForm.errors.pwdMissMatch && signUpFormControls.repeatPassword.touched'/>
+                        <p class='text-danger' [class.d-none]='!(signupForm.errors && signupForm.errors.pwdMissMatch) || signUpFormControls.repeatPassword.untouched'>
+                            Passwords do not match.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-theme btn-xl text-uppercase" id="signupButton" type="submit" [disabled]='signupForm.invalid'>Sign up</button>
+                <br>
+                <p class="form-notes">Already have an account? <a routerLink="/login">Log in</a></p>
+            </div>
+        </form>
+    </div>
+</section>

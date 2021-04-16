@@ -1,0 +1,84 @@
+<!-- Authors Grid-->
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <br>
+            <h2 class="section-heading text-uppercase">Authors</h2>
+            <h3 class="section-subheading text-muted">Know more about the great writers.</h3>
+        </div>
+        <!-- Loading animation -->
+        <div id="building" *ngIf='!loaded'>
+            <div id="blocks">
+              <div class="b" id="b1"></div>
+              <div class="b" id="b2"></div>
+              <div class="b" id="b3"></div>
+              <div class="b" id="b4"></div>
+            </div>
+            <div id="caption">
+              Loading..
+            </div>
+        </div>
+        <!-- /Loading animation -->
+        <!-- Error message -->
+        <div *ngIf='error' id="errorBlock">
+            <div id="errorMsg">
+                Sorry! Something went wrong.
+            </div>
+        </div>
+        <!-- /Error message -->
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-4" *ngFor="let author of authors">
+                <div class="portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href='#author{{author._id}}'>
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" loading="lazy" [src]="author.thumbnail" onerror='this.src="assets/images/person.png"' alt="" style="width:400px;height:300px" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">{{author.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Single author-->
+<div class="portfolio-modal modal fade" *ngFor="let author of authors" id="author{{author._id}}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal"><img src="assets/images/close-icon.svg" alt="Close modal" /></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <!-- Author Details Go Here-->
+                            <h2 class="text-uppercase">{{author.name}}</h2>
+                            <br>
+                            <img class="img-fluid d-block mx-auto" loading="lazy" [src]="author.thumbnail" alt="" onerror='this.src="assets/images/person.png"' />
+                            <p class="item-intro text-muted">
+                                <b>Famous works</b>: {{author.books}}
+                                <br>
+                                <br>
+                                {{author.description}}
+                            </p>
+                            <a href="/edit-author/{{author._id}}" class="btn btn-theme" role="button">
+                                <i class="fas fa-edit mr-1"></i>
+                                Edit
+                            </a>
+                            <a href="/delete-author/{{author._id}}" role="button" class="btn btn-danger">
+                                <i class="fas fa-trash mr-1"></i>
+                                Delete
+                            </a>
+                            <button class="btn btn-success" data-dismiss="modal" type="button">
+                                <i class="fas fa-times mr-1"></i>
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

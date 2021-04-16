@@ -1,0 +1,49 @@
+<!-- Log in-->
+<section class="page-section input-section input-section-bg-theme d-flex align-items-center" id="login">
+    <div class="container">
+        <br>
+        <br>
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Log in</h2>
+            <br>
+        </div>
+        <form id="loginForm" name="loginForm" class="input-form" #userLogin="ngForm" (ngSubmit)="login()" novalidate=true>
+            <div class="row align-items-stretch mb-5 justify-content-around">
+                <div class="col-md-6">
+                    <div id="success" class="text-center" [class.d-none]='loginState=="none"'>
+                        <div class='alert alert-warning' [class.d-none]='loginState!="connecting"'>
+                            <strong>Loging in..</strong>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        </div>
+                        <div class='alert alert-success' [class.d-none]='loginState!="success"'>
+                            <strong>Login successful</strong>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        </div>
+                        <div class='alert alert-danger' [class.d-none]='loginState!="error"'>
+                            <strong>{{errorMsg}}</strong>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="email" name="email" type="email" placeholder="Email id *" required pattern='^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}'
+                            #email='ngModel' [class.is-valid]='email.valid' [class.is-invalid]='email.invalid && email.touched' [(ngModel)]='user.email'/>
+                        <p class='text-danger' [class.d-none]='email.valid || email.untouched'>Please enter a valid email.</p>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Password *" required minlength="8"
+                            #password='ngModel' [class.is-valid]='password.valid' [class.is-invalid]='password.invalid && password.touched' [(ngModel)]='user.password'/>
+                        <div class='text-danger' [class.d-none]='password.valid || password.untouched'>
+                            <span [class.d-none]='!(password.errors && password.errors.required)'>Password can not be blank.</span> 
+                            <span [class.d-none]='!(password.errors && password.errors.minlength)'>Password should be minimum 8 characters</span> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-theme btn-xl text-uppercase" id="loginButton" type="submit" [disabled]='userLogin.form.invalid'>Log in</button>
+                <br>
+                <p class="form-notes">Don't have an account? <a routerLink="/signup">Sign up</a></p>
+            </div>
+        </form>
+    </div>
+</section>

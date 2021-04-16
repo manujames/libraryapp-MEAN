@@ -1,0 +1,63 @@
+<!-- Add Author-->
+<section class="page-section input-section input-section-bg-dark d-flex align-items-center" id="addAuthor">
+    <div class="container">
+        <br>
+        <br>
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Add New Author</h2>
+            <h3 class="section-subheading text-muted">Enter details of author.</h3>
+        </div>
+        <form id="addAuthorForm" name="addAuthorForm" class="input-form" #addAuthorForm="ngForm" (ngSubmit)="addAuthor()" enctype="multipart/form-data" novalidate=true>
+            <div class="row align-items-stretch mb-5">
+                <div id="success" class="col-md-12 text-center" [class.d-none]='state=="none"'>
+                    <div class='alert alert-warning' [class.d-none]='state!="connecting"'>
+                        <strong>Saving..</strong>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    </div>
+                    <div class='alert alert-success' [class.d-none]='state!="success"'>
+                        <strong>Added successfully</strong>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    </div>
+                    <div class='alert alert-danger' [class.d-none]='state!="error"'>
+                        <strong>{{errorMsg}}</strong>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control" id="name" name="name" type="text" placeholder="Name *" required
+                            #name="ngModel" [class.is-valid]='name.valid' [class.is-invalid]='name.invalid && name.touched' [(ngModel)]='author.name'/>
+                        <p class='text-danger' [class.d-none]='name.valid || name.untouched'>Please enter author's name.</p>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="a_books" name="books" type="text" placeholder="Major works *" required
+                            #books="ngModel" [class.is-valid]='books.valid' [class.is-invalid]='books.invalid && books.touched' [(ngModel)]='author.books'/>
+                        <p class='text-danger' [class.d-none]='books.valid || books.untouched'>Please enter popular works by the author.</p>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <div class="row">
+                            <div class="col">
+                                <label for="img" style="color: white;">Select an image of size less than 1 MB</label>
+                                <input class="form-control" id="img" name="img" type="file" accept="image/*" (change)="onFileChange($event)"/>
+                            </div>
+                            <div class="col" *ngIf="imageSrc">
+                                <img [src]="imageSrc" style="height: 135px; width:135px">
+                            </div>
+                        </div>
+                        <p class='text-danger' [class.d-none]='!imgError'>{{imgError}}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group form-group-textarea mb-md-0">
+                        <textarea class="form-control" id="description" name="description" placeholder="About author *" required
+                            #description="ngModel" [class.is-valid]='description.valid' [class.is-invalid]='description.invalid && description.touched' [(ngModel)]="author.description"></textarea>
+                        <p class='text-danger' [class.d-none]='description.valid || description.untouched'>Please enter a short description about the author.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary btn-xl text-uppercase" id="addAuthorButton" type="submit" [disabled]='addAuthorForm.form.invalid || imgError'>Add</button>
+            </div>
+        </form>
+    </div>
+</section>
